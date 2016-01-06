@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104131223) do
+ActiveRecord::Schema.define(version: 20160106074801) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "first_name",      limit: 25
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20160104131223) do
   end
 
   add_index "admin_users", ["username"], name: "index_admin_users_on_username", using: :btree
+
+  create_table "admin_users_pages", id: false, force: :cascade do |t|
+    t.integer "admin_users_id", limit: 4
+    t.integer "page_id",        limit: 4
+  end
 
   create_table "pages", force: :cascade do |t|
     t.integer  "subject_id", limit: 4
